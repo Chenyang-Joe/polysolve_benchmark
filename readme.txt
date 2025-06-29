@@ -28,3 +28,5 @@ export OMP_NUM_THREADS=1
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 gdb ./TestMatLogger
 run /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/59_2_A.bin /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/59_2_b.bin AMGCL
+
+./TestMatLogger /home/yibo/myrepo/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/74_2_A.bin /home/yibo/myrepo/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/74_2_b.bin AMGCL
