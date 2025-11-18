@@ -1,0 +1,192 @@
+[EXPBEGIN]
+[2025-07-30 15:38:40.038] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:38:58.479] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] inner 28
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] final_res_norm 5.782e-10
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] num_iterations 34
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 16.204s
+[2025-07-30 15:38:58.480] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 18.426s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:40:15.181] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] inner 27
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.8442e-10
+[2025-07-30 15:40:36.101] [test_logger] [trace] [[35mstats[0m] num_iterations 37
+[2025-07-30 15:40:36.102] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:40:36.102] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 18.226s
+[2025-07-30 15:40:36.102] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 20.911s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:41:58.275] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] inner 21
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] final_res_norm 4.807e-12
+[2025-07-30 15:42:04.650] [test_logger] [trace] [[35mstats[0m] num_iterations 2
+[2025-07-30 15:42:04.651] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:42:04.651] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 5.2434s
+[2025-07-30 15:42:04.651] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 6.3661s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:43:23.529] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] inner 31
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.2046e-10
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 7.9986s
+[2025-07-30 15:43:33.617] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 10.079s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:44:50.510] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] inner 10
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] final_res_norm 4.8568e-16
+[2025-07-30 15:44:56.840] [test_logger] [trace] [[35mstats[0m] num_iterations 2
+[2025-07-30 15:44:56.841] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:44:56.841] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 5.65s
+[2025-07-30 15:44:56.841] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 6.3214s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:46:19.343] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] inner 20
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] final_res_norm 1.0321e-11
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 5.005s
+[2025-07-30 15:46:24.560] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 5.2083s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:47:41.997] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] inner 24
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] final_res_norm 1.9921e-10
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] num_iterations 1
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 6.6328s
+[2025-07-30 15:47:49.000] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 6.9912s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:49:28.510] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] inner 5
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.5123e-10
+[2025-07-30 15:49:45.946] [test_logger] [trace] [[35mstats[0m] num_iterations 20
+[2025-07-30 15:49:45.947] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:49:45.947] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 16.862s
+[2025-07-30 15:49:45.947] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 17.426s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:51:06.142] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:51:16.451] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:51:16.452] [test_logger] [trace] [[35mstats[0m] inner 19
+[2025-07-30 15:51:16.452] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:51:16.452] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:51:16.452] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.1717e-10
+[2025-07-30 15:51:16.452] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:51:16.457] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:51:16.457] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 9.932s
+[2025-07-30 15:51:16.457] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 10.295s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:52:43.121] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] inner 7
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.1635e-10
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 7.0734s
+[2025-07-30 15:52:50.675] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 7.546s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:54:22.476] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] inner 2
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] final_res_norm 7.9663e-10
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] num_iterations 38
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 19.923s
+[2025-07-30 15:54:45.102] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 22.606s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:56:13.422] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:56:35.856] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:56:35.860] [test_logger] [trace] [[35mstats[0m] inner 13
+[2025-07-30 15:56:35.860] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:56:35.860] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:56:35.860] [test_logger] [trace] [[35mstats[0m] final_res_norm 8.0157e-10
+[2025-07-30 15:56:35.860] [test_logger] [trace] [[35mstats[0m] num_iterations 38
+[2025-07-30 15:56:35.861] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:56:35.861] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 18.889s
+[2025-07-30 15:56:35.861] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 22.421s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:58:14.260] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] inner 26
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] final_res_norm 7.9262e-10
+[2025-07-30 15:58:32.899] [test_logger] [trace] [[35mstats[0m] num_iterations 38
+[2025-07-30 15:58:32.900] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:58:32.900] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 16.813s
+[2025-07-30 15:58:32.900] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 18.626s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:00:04.582] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] inner 16
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] final_res_norm 5.797e-10
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] num_iterations 34
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 15.926s
+[2025-07-30 16:00:23.032] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 18.44s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:01:31.098] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 16:01:46.344] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] inner 3
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.7934e-10
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] num_iterations 37
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 14.517s
+[2025-07-30 16:01:46.345] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 15.238s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:02:48.776] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] inner 32
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] final_res_norm 1.0321e-11
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 3.9253s
+[2025-07-30 16:02:52.755] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 3.9703s
+[EXPEND]

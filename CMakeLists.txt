@@ -77,15 +77,18 @@ find_package(Boost REQUIRED COMPONENTS serialization)
 
 include_directories(
     include             
-    libs/polysolve    
+    /u/1/chenyang/benchmark/libs/polysolve
 )
+
+add_subdirectory(/u/1/chenyang/benchmark/libs/polysolve)
 
 # include_directories(
 #     include             
-#     /u/1/chenyang/PolySolve-trilinos/polysolve
-# )
+#     /u/1/chenyang/benchmark/libs/polyfem_debug_set/polysolve)
 
-add_subdirectory(libs/polysolve)
+# add_subdirectory(/u/1/chenyang/benchmark/libs/polyfem_debug_set/polysolve)
+
+
 
 set(TestMainSource
     src/main.cpp     
@@ -101,8 +104,8 @@ target_link_libraries(TestMain PRIVATE
     m
     dl
     "${TBB_LIB_DIR}/libtbb.so"   
-
 )
+
 set_target_properties(TestMain PROPERTIES
   LINK_FLAGS "-Wl,--no-as-needed"
 )
@@ -172,10 +175,6 @@ target_link_libraries(TestMatCN PRIVATE
 set_target_properties(TestMatCN PROPERTIES
   LINK_FLAGS "-Wl,--no-as-needed"
 )
-
-
-
-
 
 set(TestMatLoggerSource
     src/main_test_mat_logger.cpp     

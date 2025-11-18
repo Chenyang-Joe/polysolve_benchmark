@@ -6,6 +6,7 @@
 #include <chrono>
 #include <regex>
 
+
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
 
@@ -20,6 +21,8 @@
 #include <spdlog/fmt/bundled/color.h>
 #endif
 
+// #include "polysolve/Utils.hpp"
+// #include <tbb/global_control.h>
 
 using namespace Eigen;
 using namespace std;
@@ -65,11 +68,11 @@ int main(int argc, char **argv)
 
 
     // Load matrix
-    Eigen::SparseMatrix<double> A;
+    polysolve::StiffnessMatrix A;
     int dim_local = 0;
     int is_symmetric_positive_definite = 0;
     int is_sequence_of_problems = 0;
-    Deserialize(A, dim_local, is_symmetric_positive_definite, is_sequence_of_problems, A_file);
+    benchy::io::DeserializeStiffnessMatrix(A, dim_local, is_symmetric_positive_definite, is_sequence_of_problems, A_file);
 
     // printf("DESERIALIZING A\n");
     // std::cout << "DIM: " << dim_local <<  " IS_SPD: " << is_symmetric_positive_definite << " IS_SEQ: " << is_sequence_of_problems << std::endl;
@@ -104,6 +107,27 @@ int main(int argc, char **argv)
     input["solver"] = {solver_name};
     auto solver = linear::Solver::create(input, *logger);
 
+    // // manually set parameters
+    // if( solver_name == "AMGCL")
+    // {    
+    //         json params = {
+    //     { "AMGCL", {
+    //     { "solver", {
+    //         { "tol", 1e-10 }       // <-- your new tolerance
+    //     }}
+    //     }}
+    // };  
+    //     solver->set_parameters(params);}
+    // else if(solver_name == "Hypre"){
+
+    //         json params = {
+    //             { "Hypre", {
+    //                 { "tolerance", 1e-10 }    // your new tolerance
+    //             }}
+    //         };
+    //     solver->set_parameters(params);
+    // }
+
     // Configuration parameters like iteration or accuracy for iterative solvers
     // solver->set_parameters(params);
 
@@ -117,6 +141,7 @@ int main(int argc, char **argv)
 
     begin_clock=clock();
     begin = std::chrono::high_resolution_clock::now();
+
     solver->analyze_pattern(A, A.rows());
     solver->factorize(A);
     // if (is_nullspace == true)
@@ -126,14 +151,29 @@ int main(int argc, char **argv)
     solver->solve(b, x);
     end_clock=clock();
     end = std::chrono::high_resolution_clock::now();
+    float residual = (A * x - b).norm(); // A x - b = 0
+    logger->trace(log_fmt_text_stats, "residual", residual);
+
+
+    bool direct_solver = false;
+    if (solver_name ==  "AMGCL" || solver_name == "Hypre"){
+        direct_solver =true;
+    }
 
 
     json my_params = {};
     solver->get_info(my_params);
-    double num_iter = my_params["num_iterations"];
-    double final_res_norm = my_params["final_res_norm"];
-    double tol = my_params["solver_tol"];
-    double maxiter = my_params["solver_maxiter"];
+    double num_iter = 0.0;
+    double final_res_norm = 0.0;
+    double tol = 0.0;
+    double maxiter = 0.0;
+    if (direct_solver)
+    {
+    num_iter = my_params["num_iterations"];
+    final_res_norm = my_params["final_res_norm"];
+    tol = my_params["solver_tol"];
+    maxiter = my_params["solver_maxiter"];
+    }
 
     std::regex pattern(R"((\d+)_(\d+)_A\.bin)");
     std::smatch steps_match;
@@ -149,11 +189,15 @@ int main(int argc, char **argv)
     logger->trace(log_fmt_text_stats, "outer", outer);
     logger->trace(log_fmt_text_stats, "inner", inner);
 
-    logger->trace(log_fmt_text_stats, "solver_tol", tol);
-    logger->trace(log_fmt_text_stats, "solver_maxiter", maxiter);
-    logger->trace(log_fmt_text_stats, "final_res_norm", final_res_norm);
-    logger->trace(log_fmt_text_stats, "num_iterations", num_iter);
-    logger->trace(log_fmt_text_stats, "norm_b", b.norm());
+    if(direct_solver)
+    {
+        logger->trace(log_fmt_text_stats, "solver_tol", tol);
+        logger->trace(log_fmt_text_stats, "solver_maxiter", maxiter);
+        logger->trace(log_fmt_text_stats, "final_res_norm", final_res_norm);
+        logger->trace(log_fmt_text_stats, "num_iterations", num_iter);
+        logger->trace(log_fmt_text_stats, "norm_b", b.norm());
+    }
+
 
 
     ret=(end_clock-begin_clock) / (double) CLOCKS_PER_SEC;
@@ -166,5 +210,5 @@ int main(int argc, char **argv)
     // std::cout << "clock_time: " << ret << " ";
     // std::cout << "elapse_time: " << elapsed_seconds << " ";
 
-    std::cout<<"[EXPEND]"<<std::endl;
+    std::cout<<"[EXPEND]"<<std::endl;    
 }

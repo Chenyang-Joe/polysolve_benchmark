@@ -1,0 +1,224 @@
+[EXPBEGIN]
+[2025-07-30 15:38:58.795] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:39:05.135] [test_logger] [trace] [[35mtiming[0m] factorize 6.3323s
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mtiming[0m] solve 8.7953s
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] inner 28
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.0813e-12
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] num_iterations 5
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 13.611s
+[2025-07-30 15:39:13.931] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 15.128s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:40:36.422] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:40:43.034] [test_logger] [trace] [[35mtiming[0m] factorize 6.6029s
+[2025-07-30 15:40:52.252] [test_logger] [trace] [[35mtiming[0m] solve 9.2184s
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] inner 27
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] final_res_norm 8.6285e-10
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] num_iterations 5
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 13.779s
+[2025-07-30 15:40:52.253] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 15.822s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:42:04.998] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:42:11.569] [test_logger] [trace] [[35mtiming[0m] factorize 6.5609s
+[2025-07-30 15:42:16.844] [test_logger] [trace] [[35mtiming[0m] solve 5.2749s
+[2025-07-30 15:42:16.847] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:42:16.847] [test_logger] [trace] [[35mstats[0m] inner 21
+[2025-07-30 15:42:16.847] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:42:16.847] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:42:16.847] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.17e-12
+[2025-07-30 15:42:16.848] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:42:16.848] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:42:16.848] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 10.586s
+[2025-07-30 15:42:16.848] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 11.839s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:43:33.894] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:43:40.992] [test_logger] [trace] [[35mtiming[0m] factorize 7.0895s
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mtiming[0m] solve 7.1067s
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] inner 31
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.2713e-10
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:43:48.099] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:43:48.100] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 12.607s
+[2025-07-30 15:43:48.100] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 14.196s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:44:57.295] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:45:03.811] [test_logger] [trace] [[35mtiming[0m] factorize 6.5036s
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mtiming[0m] solve 4.4321s
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] inner 10
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] final_res_norm 6.8196e-14
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 10.299s
+[2025-07-30 15:45:08.243] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 10.936s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:46:24.851] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:46:30.979] [test_logger] [trace] [[35mtiming[0m] factorize 6.1151s
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mtiming[0m] solve 5.5017s
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] inner 20
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.0455e-10
+[2025-07-30 15:46:36.481] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:46:36.485] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:46:36.485] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 10.556s
+[2025-07-30 15:46:36.485] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 11.617s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:47:49.334] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:47:57.093] [test_logger] [trace] [[35mtiming[0m] factorize 7.7503s
+[2025-07-30 15:48:03.824] [test_logger] [trace] [[35mtiming[0m] solve 6.7308s
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] inner 24
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] final_res_norm 6.5791e-14
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 14.054s
+[2025-07-30 15:48:03.825] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 14.482s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:49:46.350] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:49:53.060] [test_logger] [trace] [[35mtiming[0m] factorize 6.6954s
+[2025-07-30 15:49:58.783] [test_logger] [trace] [[35mtiming[0m] solve 5.723s
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] inner 5
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] final_res_norm 1.2687e-12
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] num_iterations 4
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 11.989s
+[2025-07-30 15:49:58.784] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 12.419s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:51:16.897] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:51:24.697] [test_logger] [trace] [[35mtiming[0m] factorize 7.79s
+[2025-07-30 15:51:31.081] [test_logger] [trace] [[35mtiming[0m] solve 6.3845s
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] inner 19
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.2713e-10
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 13.695s
+[2025-07-30 15:51:31.082] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 14.175s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:52:51.040] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:52:57.871] [test_logger] [trace] [[35mtiming[0m] factorize 6.8225s
+[2025-07-30 15:53:05.621] [test_logger] [trace] [[35mtiming[0m] solve 7.7498s
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] inner 7
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.2711e-10
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 13.717s
+[2025-07-30 15:53:05.622] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 14.573s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:54:45.547] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:54:53.702] [test_logger] [trace] [[35mtiming[0m] factorize 8.1344s
+[2025-07-30 15:55:07.928] [test_logger] [trace] [[35mtiming[0m] solve 14.226s
+[2025-07-30 15:55:07.928] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:55:07.928] [test_logger] [trace] [[35mstats[0m] inner 2
+[2025-07-30 15:55:07.928] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.2485e-11
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mstats[0m] num_iterations 6
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 18.115s
+[2025-07-30 15:55:07.929] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 22.361s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:56:36.198] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:56:42.772] [test_logger] [trace] [[35mtiming[0m] factorize 6.558s
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mtiming[0m] solve 20.417s
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mstats[0m] inner 13
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:57:03.190] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.2486e-11
+[2025-07-30 15:57:03.191] [test_logger] [trace] [[35mstats[0m] num_iterations 6
+[2025-07-30 15:57:03.199] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:57:03.199] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 24.626s
+[2025-07-30 15:57:03.199] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 26.976s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 15:58:33.174] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 15:58:37.166] [test_logger] [trace] [[35mtiming[0m] factorize 3.9828s
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mtiming[0m] solve 17.847s
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] inner 26
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] final_res_norm 2.2487e-11
+[2025-07-30 15:58:55.013] [test_logger] [trace] [[35mstats[0m] num_iterations 6
+[2025-07-30 15:58:55.014] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 15:58:55.014] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 20.445s
+[2025-07-30 15:58:55.014] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 21.83s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:00:23.527] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 16:00:30.272] [test_logger] [trace] [[35mtiming[0m] factorize 6.7321s
+[2025-07-30 16:00:40.535] [test_logger] [trace] [[35mtiming[0m] solve 10.263s
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] inner 16
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.0813e-12
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] num_iterations 5
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 15.094s
+[2025-07-30 16:00:40.536] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 16.996s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:01:46.564] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 16:01:51.119] [test_logger] [trace] [[35mtiming[0m] factorize 4.5463s
+[2025-07-30 16:01:58.023] [test_logger] [trace] [[35mtiming[0m] solve 6.9045s
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] inner 3
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] final_res_norm 8.6283e-10
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] num_iterations 5
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mstats[0m] norm_b 1.8095e-07
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 11.41s
+[2025-07-30 16:01:58.024] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 11.451s
+[EXPEND]
+[EXPBEGIN]
+[2025-07-30 16:02:52.978] [test_logger] [info] Solver AMGCL is the highest priority available solver; using it.
+[2025-07-30 16:02:57.353] [test_logger] [trace] [[35mtiming[0m] factorize 4.3665s
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mtiming[0m] solve 7.7524s
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] inner 32
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-09
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] final_res_norm 9.0451e-10
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] num_iterations 3
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mstats[0m] norm_b 1.8094e-07
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 11.772s
+[2025-07-30 16:03:05.106] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 12.119s
+[EXPEND]

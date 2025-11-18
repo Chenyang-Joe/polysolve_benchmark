@@ -1,0 +1,12 @@
+[EXPBEGIN]
+[2025-08-06 16:15:05.455] [test_logger] [info] Solver Hypre is the highest priority available solver; using it.
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] inner 160
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] solver_tol 1e-10
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] solver_maxiter 1000
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] final_res_norm 8.7816e-11
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] num_iterations 37
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mstats[0m] norm_b 1.809e-07
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 14.105s
+[2025-08-06 16:15:19.570] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 14.109s
+[EXPEND]

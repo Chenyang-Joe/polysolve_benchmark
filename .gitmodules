@@ -1,0 +1,3 @@
+[submodule "libs/polysolve"]
+	path = libs/polysolve
+	url = git@github.com:Chenyang-Joe/polysolve.git

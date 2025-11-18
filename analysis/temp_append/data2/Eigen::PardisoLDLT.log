@@ -1,0 +1,7 @@
+[EXPBEGIN]
+[2025-08-06 16:13:43.304] [test_logger] [info] Solver Eigen::PardisoLDLT is the highest priority available solver; using it.
+[2025-08-06 16:13:55.407] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:13:55.407] [test_logger] [trace] [[35mstats[0m] inner 160
+[2025-08-06 16:13:55.407] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 460.98s
+[2025-08-06 16:13:55.407] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 12.097s
+[EXPEND]

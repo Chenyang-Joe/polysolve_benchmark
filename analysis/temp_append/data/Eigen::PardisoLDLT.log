@@ -1,0 +1,28 @@
+[EXPBEGIN]
+[2025-08-06 16:12:44.856] [test_logger] [info] Solver Eigen::PardisoLDLT is the highest priority available solver; using it.
+[2025-08-06 16:12:53.310] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:12:53.310] [test_logger] [trace] [[35mstats[0m] inner 160
+[2025-08-06 16:12:53.310] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 265.91s
+[2025-08-06 16:12:53.310] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 8.4399s
+[EXPEND]
+[EXPBEGIN]
+[2025-08-06 16:12:54.393] [test_logger] [info] Solver Eigen::PardisoLDLT is the highest priority available solver; using it.
+[2025-08-06 16:13:04.496] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:13:04.496] [test_logger] [trace] [[35mstats[0m] inner 124
+[2025-08-06 16:13:04.496] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 323.09s
+[2025-08-06 16:13:04.496] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 10.089s
+[EXPEND]
+[EXPBEGIN]
+[2025-08-06 16:13:05.579] [test_logger] [info] Solver Eigen::PardisoLDLT is the highest priority available solver; using it.
+[2025-08-06 16:13:16.052] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:13:16.052] [test_logger] [trace] [[35mstats[0m] inner 273
+[2025-08-06 16:13:16.052] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 351.75s
+[2025-08-06 16:13:16.052] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 10.458s
+[EXPEND]
+[EXPBEGIN]
+[2025-08-06 16:13:17.132] [test_logger] [info] Solver Eigen::PardisoLDLT is the highest priority available solver; using it.
+[2025-08-06 16:13:28.388] [test_logger] [trace] [[35mstats[0m] outer 1
+[2025-08-06 16:13:28.388] [test_logger] [trace] [[35mstats[0m] inner 346
+[2025-08-06 16:13:28.388] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] clock_time 420.32s
+[2025-08-06 16:13:28.388] [test_logger] [trace] [[35mnon_stopwatch_timing[0m] elapse_time 11.242s
+[EXPEND]
