@@ -9,6 +9,9 @@ export OMP_NUM_THREADS=1
 ./TestMatTime /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/59_2_A.bin /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/59_2_b.bin AMGCL
 ./TestMatTime /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/74_2_A.bin /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/74_2_b.bin AMGCL
 export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export MKL_THREADING_LAYER=GNU
+
 ./TestMatTime /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/3_2_A.bin /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/3_2_b.bin AMGCL
 ./TestMatTime /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/70_1_A.bin /u/1/chenyang/matrix_resource/solver-mat-0906/golf-ball-doformable-wall/70_1_b.bin AMGCL
 

@@ -21,6 +21,11 @@
 #include <spdlog/fmt/bundled/color.h>
 #endif
 
+// // Include MKL header for thread control
+// #ifdef EIGEN_USE_MKL_ALL
+// #include <mkl.h>
+// #endif
+
 // #include "polysolve/Utils.hpp"
 // #include <tbb/global_control.h>
 
@@ -34,6 +39,7 @@ using namespace polysolve;
 
 int main(int argc, char **argv)
 {
+    
     std::cout<<"[EXPBEGIN]"<<std::endl;
     if (argc < 4) 
     {
@@ -46,18 +52,43 @@ int main(int argc, char **argv)
     std::string nullspace_file;
     std::string solver_name;
     bool is_nullspace;
+    // int num_threads = 1;  // default to 1 thread
 
     if (argc == 4)
     {
         solver_name = argv[3];  // "Hypre"
         is_nullspace = false;
     }
-    else
-    {
-	    nullspace_file = argv[3];
+    else{
+        nullspace_file = argv[3];
         solver_name = argv[4];  // "Hypre"
         is_nullspace = true;
     }
+
+
+    // else if(argc == 5)
+    // {
+    // solver_name = argv[4];  // "Hypre"
+    // if (solver_name.substr(0,5) != "Eigen")
+    // {
+	//     nullspace_file = argv[3];
+    //     is_nullspace = true;
+    // }else{
+    //     //!!! this method does not work!!! do not use it!!! 
+    //     // does not support nullspace and control threads together
+    //     num_threads = std::stoi(argv[3]);  // Remove 'int' - use outer variable
+    //     is_nullspace = false;
+    //     // set number of threads for Eigen
+    //     #ifdef EIGEN_USE_MKL_ALL
+    //     mkl_set_dynamic(0); 
+    //     mkl_set_num_threads(num_threads);
+    //     std::cout << "MKL threads set to: " << mkl_get_max_threads() << std::endl;
+    //     #endif
+    //     Eigen::setNbThreads(num_threads);
+    //     std::cout << "Eigen threads set to: " << Eigen::nbThreads() << std::endl;
+    //     }
+    // }
+    
     
     // record time
     time_t begin_clock,end_clock;
@@ -113,7 +144,7 @@ int main(int argc, char **argv)
     //         json params = {
     //     { "AMGCL", {
     //     { "solver", {
-    //         { "tol", 1e-10 }       // <-- your new tolerance
+    //         { "tol", 1e-8 }       // <-- your new tolerance
     //     }}
     //     }}
     // };  
@@ -122,7 +153,7 @@ int main(int argc, char **argv)
 
     //         json params = {
     //             { "Hypre", {
-    //                 { "tolerance", 1e-10 }    // your new tolerance
+    //                 { "tolerance", 1e-8 }    // your new tolerance
     //             }}
     //         };
     //     solver->set_parameters(params);
@@ -138,7 +169,7 @@ int main(int argc, char **argv)
     // Eigen::VectorXd b;
     // Solution
     Eigen::VectorXd x(b.size());
-
+    x.setZero();
     begin_clock=clock();
     begin = std::chrono::high_resolution_clock::now();
 
