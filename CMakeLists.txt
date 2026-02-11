@@ -54,7 +54,7 @@ add_library(mkl::mkl UNKNOWN IMPORTED GLOBAL)
 set_target_properties(mkl::mkl PROPERTIES
   IMPORTED_LOCATION            "${MKL_LIB_DIR}/libmkl_core.so"
   INTERFACE_INCLUDE_DIRECTORIES "${MKL_INCLUDE_DIR}"
-  INTERFACE_LINK_LIBRARIES     "${MKL_LIB_DIR}/libmkl_intel_lp64.so;${MKL_LIB_DIR}/libmkl_tbb_thread.so;${MKL_LIB_DIR}/libmkl_core.so"
+  INTERFACE_LINK_LIBRARIES     "${MKL_LIB_DIR}/libmkl_intel_lp64.so;${MKL_LIB_DIR}/libmkl_gnu_thread.so;${MKL_LIB_DIR}/libmkl_core.so"
   )
 
 set(TBBROOT "/opt/intel/tbb")
@@ -79,20 +79,22 @@ include_directories(
     include             
     /u/1/chenyang/benchmark/libs/polysolve
 )
-
 add_subdirectory(/u/1/chenyang/benchmark/libs/polysolve)
 
 # include_directories(
 #     include             
-#     /u/1/chenyang/benchmark/libs/polyfem_debug_set/polysolve)
+#     /u/1/chenyang/benchmark/libs/trilinos_yibo
+# )
+# add_subdirectory(/u/1/chenyang/benchmark/libs/trilinos_yibo)
 
-# add_subdirectory(/u/1/chenyang/benchmark/libs/polyfem_debug_set/polysolve)
 
 
 set(TestMatLoggerSource
     src/main_test_mat_logger.cpp     
     src/save_problem.cpp     
 )
+find_package(OpenMP REQUIRED)
+
 add_executable(TestMatLogger ${TestMatLoggerSource})
 target_include_directories(TestMatLogger PRIVATE "${MKL_INCLUDE_DIR}")
 target_link_libraries(TestMatLogger PRIVATE
@@ -101,8 +103,17 @@ target_link_libraries(TestMatLogger PRIVATE
     pthread
     m
     dl
-    "${TBB_LIB_DIR}/libtbb.so"   
+    OpenMP::OpenMP_CXX
 )
+
+# target_link_libraries(TestMatLogger PRIVATE
+#     polysolve
+#     mkl::mkl
+#     pthread
+#     m
+#     dl
+#     "${TBB_LIB_DIR}/libtbb.so"   
+# )
 set_target_properties(TestMatLogger PROPERTIES
   LINK_FLAGS "-Wl,--no-as-needed"
 )

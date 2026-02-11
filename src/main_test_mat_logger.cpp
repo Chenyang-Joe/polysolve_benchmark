@@ -183,12 +183,12 @@ int main(int argc, char **argv)
     end_clock=clock();
     end = std::chrono::high_resolution_clock::now();
     float residual = (A * x - b).norm(); // A x - b = 0
-    logger->trace(log_fmt_text_stats, "residual", residual);
+    logger->trace(fmt::runtime(log_fmt_text_stats), "residual", residual);
 
 
-    bool direct_solver = false;
-    if (solver_name ==  "AMGCL" || solver_name == "Hypre"){
-        direct_solver =true;
+    bool iterative_solver = false;
+    if (solver_name ==  "AMGCL" || solver_name == "Hypre" || solver_name == "Trilinos"){
+        iterative_solver =true;
     }
 
 
@@ -198,7 +198,7 @@ int main(int argc, char **argv)
     double final_res_norm = 0.0;
     double tol = 0.0;
     double maxiter = 0.0;
-    if (direct_solver)
+    if (iterative_solver)
     {
     num_iter = my_params["num_iterations"];
     final_res_norm = my_params["final_res_norm"];
@@ -217,16 +217,16 @@ int main(int argc, char **argv)
         outer = -1;  // 
         inner = -1; //    
     }
-    logger->trace(log_fmt_text_stats, "outer", outer);
-    logger->trace(log_fmt_text_stats, "inner", inner);
+    logger->trace(fmt::runtime(log_fmt_text_stats), "outer", outer);
+    logger->trace(fmt::runtime(log_fmt_text_stats), "inner", inner);
 
-    if(direct_solver)
+    if(iterative_solver)
     {
-        logger->trace(log_fmt_text_stats, "solver_tol", tol);
-        logger->trace(log_fmt_text_stats, "solver_maxiter", maxiter);
-        logger->trace(log_fmt_text_stats, "final_res_norm", final_res_norm);
-        logger->trace(log_fmt_text_stats, "num_iterations", num_iter);
-        logger->trace(log_fmt_text_stats, "norm_b", b.norm());
+        logger->trace(fmt::runtime(log_fmt_text_stats), "solver_tol", tol);
+        logger->trace(fmt::runtime(log_fmt_text_stats), "solver_maxiter", maxiter);
+        logger->trace(fmt::runtime(log_fmt_text_stats), "final_res_norm", final_res_norm);
+        logger->trace(fmt::runtime(log_fmt_text_stats), "num_iterations", num_iter);
+        logger->trace(fmt::runtime(log_fmt_text_stats), "norm_b", b.norm());
     }
 
 
@@ -236,8 +236,8 @@ int main(int argc, char **argv)
     // std::cout << "Solution: \n" << x << std::endl;
 
     // std::cout << "Condition Number: " << cond_number << std::endl;
-    logger->trace(log_fmt_text_time, "clock_time", ret);
-    logger->trace(log_fmt_text_time, "elapse_time", elapsed_seconds);
+    logger->trace(fmt::runtime(log_fmt_text_time), "clock_time", ret);
+    logger->trace(fmt::runtime(log_fmt_text_time), "elapse_time", elapsed_seconds);
     // std::cout << "clock_time: " << ret << " ";
     // std::cout << "elapse_time: " << elapsed_seconds << " ";
 

@@ -76,7 +76,7 @@ def sequence_data(fname, solver):
             element["norm_b"] = float(lines[end_i-3].split(" ")[-1].strip())
             element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
             element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
-        elif solver == "AMGCL":
+        elif solver == "AMGCL" or solver == "Trilinos":
             element["factorize"] = float(lines[end_i-12].split(" ")[-1].strip().rstrip("s"))
             element["solve"] = float(lines[end_i-11].split(" ")[-1].strip().rstrip("s"))
             element["residual"] = float(lines[end_i-10].split(" ")[-1].strip())
@@ -187,7 +187,7 @@ def parse_log_file(fname, solver):
         data_one_exp["clock_time"] = entry["clock_time"]
         data_one_exp["elapse_time"] = entry["elapse_time"]
 
-        if solver == "AMGCL":
+        if solver == "AMGCL" or solver == "Trilinos":
             data_one_exp["factorize"] = entry["factorize"]
             data_one_exp["solve"] = entry["solve"]
             data_one_exp["solver_tol"] = entry["solver_tol"]

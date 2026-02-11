@@ -4,3 +4,9 @@
 [submodule "libs/trilinos_yibo"]
 	path = libs/trilinos_yibo
 	url = git@github.com:yib0liu/polysolve.git
+[submodule "libs/polysolve_yibo"]
+	path = libs/polysolve_yibo
+	url = git@github.com:yib0liu/polysolve.git
+[submodule "libs/Trilinos"]
+	path = libs/Trilinos
+	url = git@github.com:trilinos/Trilinos.git
