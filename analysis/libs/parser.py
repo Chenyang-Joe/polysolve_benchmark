@@ -1,20 +1,34 @@
 import os
+import re
 import numpy as np
+
+# Strip ANSI escape codes (e.g., \x1b[35m ... \x1b[0m) from log lines
+_RE_ANSI = re.compile(r'\x1b\[[0-9;]*m')
+
+# Patterns for matching log entries (compiled once for efficiency)
+_RE_TIMING = re.compile(r'\[timing\]\s+(\w+)\s+([\d.eE+-]+)s')
+_RE_STATS = re.compile(r'\[stats\]\s+(\w+)\s+([\d.eE+-]+)')
+_RE_NONSTOPWATCH = re.compile(r'\[non_stopwatch_timing\]\s+(\w+)\s+([\d.eE+-]+)s')
+
+def _strip_ansi(line):
+    return _RE_ANSI.sub('', line)
 
 def sequence_data(fname, solver):
     begin_line = []
     end_line = []
     with open(fname, 'r') as f:
-        lines = f.readlines()  # read all lines into a list
+        lines = f.readlines()
+
+    if len(lines) == 0:
+        return []
 
     for i, line in enumerate(lines):
-        if "[EXPBEGIN]"  in line:
+        if "[EXPBEGIN]" in line:
             begin_line.append(i)
         if "[EXPEND]" in line:
             end_line.append(i)
         if "(core dumped)" in line:
             end_line.append(i)
-            # print(f"Aborted detected in log file {fname} at line {i+1}, marking experiment end.")
 
     len_begin = len(begin_line)
     len_end = len(end_line)
@@ -29,68 +43,57 @@ def sequence_data(fname, solver):
 
         for j in range(begin_i, end_i):
             if "ERROR" in lines[j] or "error" in lines[j] or "Error" in lines[j] or "TIMEOUT" in lines[j]:
-#                 print(f"errors between {begin_i+1} line and {end_i+1} line")
                 error_detected_exp = True
                 break
 
         if error_detected_exp:
             error_detected_log = True
-            continue 
+            continue
 
         begin_correct.append(begin_i)
         end_correct.append(end_i)
-        
+
     if error_detected_log:
         print(f"Warning: errors detected in log file {fname}, some experiments are skipped.")
-        # raise ValueError(f"error in current exp: {fname}")
-
 
     seq = []
     for begin_i, end_i in zip(begin_correct, end_correct):
         element = {"solver": solver}
-        cmd = lines[begin_i-3].split(" ")
-        for part in cmd:
-            if "_A.bin" in part:
-                element["bin_A"] = part.strip()
-            if "_b.bin" in part:
-                element["bin_b"] = part.strip()
+
+        # Search backwards from [EXPBEGIN] to find the command line with _A.bin
+        # Use larger lookback for MPI logs (many "Authorization required" lines)
+        for j in range(begin_i - 1, max(begin_i - 50, -1), -1):
+            if "_A.bin" in lines[j]:
+                for part in lines[j].split():
+                    if "_A.bin" in part:
+                        element["bin_A"] = part.strip()
+                    if "_b.bin" in part:
+                        element["bin_b"] = part.strip()
+                break
 
         if element.get("bin_A") is None or element.get("bin_b") is None:
             raise ValueError(f"cannot find bin_A or bin_b in log file {fname}")
 
-        if solver == "Eigen::PardisoLDLT": # direct solver
-            element["residual"] = float(lines[end_i-5].split(" ")[-1].strip())
-            element["outer"] = float(lines[end_i-4].split(" ")[-1].strip())
-            element["inner"] = float(lines[end_i-3].split(" ")[-1].strip())
-            element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
-            element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
+        # Pattern match all metrics within the [EXPBEGIN]...[EXPEND] block
+        # Strip ANSI escape codes before matching (spdlog color output)
+        for j in range(begin_i, end_i + 1):
+            line = _strip_ansi(lines[j])
 
-        elif solver == "Hypre" : # iterative solver
-            element["residual"] = float(lines[end_i-10].split(" ")[-1].strip())
-            element["outer"] = float(lines[end_i-9].split(" ")[-1].strip())
-            element["inner"] = float(lines[end_i-8].split(" ")[-1].strip())
-            element["solver_tol"] = float(lines[end_i-7].split(" ")[-1].strip())
-            element["solver_maxiter"] = float(lines[end_i-6].split(" ")[-1].strip())
-            element["final_res_norm"] = float(lines[end_i-5].split(" ")[-1].strip())
-            element["num_iterations"] = float(lines[end_i-4].split(" ")[-1].strip())
-            element["norm_b"] = float(lines[end_i-3].split(" ")[-1].strip())
-            element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
-            element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
-        elif solver == "AMGCL" or solver == "Trilinos":
-            element["factorize"] = float(lines[end_i-12].split(" ")[-1].strip().rstrip("s"))
-            element["solve"] = float(lines[end_i-11].split(" ")[-1].strip().rstrip("s"))
-            element["residual"] = float(lines[end_i-10].split(" ")[-1].strip())
-            element["outer"] = float(lines[end_i-9].split(" ")[-1].strip())
-            element["inner"] = float(lines[end_i-8].split(" ")[-1].strip())
-            element["solver_tol"] = float(lines[end_i-7].split(" ")[-1].strip())
-            element["solver_maxiter"] = float(lines[end_i-6].split(" ")[-1].strip())
-            element["final_res_norm"] = float(lines[end_i-5].split(" ")[-1].strip())
-            element["num_iterations"] = float(lines[end_i-4].split(" ")[-1].strip())
-            element["norm_b"] = float(lines[end_i-3].split(" ")[-1].strip())
-            element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
-            element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
-        else:
-            raise ValueError(f"solver {solver} not recognized.")
+            m = _RE_TIMING.search(line)
+            if m:
+                element[m.group(1)] = float(m.group(2))
+                continue
+
+            m = _RE_NONSTOPWATCH.search(line)
+            if m:
+                element[m.group(1)] = float(m.group(2))
+                continue
+
+            m = _RE_STATS.search(line)
+            if m:
+                element[m.group(1)] = float(m.group(2))
+                continue
+
         seq.append(element)
     return seq
 
@@ -180,30 +183,153 @@ def parse_log_file(fname, solver):
         data_one_exp["density"] = get_density(data_one_exp["nnz"], data_one_exp["mat_sz"])
         data_one_exp["sparsity"] = get_sparsity(data_one_exp["nnz"], data_one_exp["mat_sz"])
 
+        # Copy all parsed fields from entry (pattern-matched, solver-agnostic)
+        for key in entry:
+            if key not in ("solver", "bin_A", "bin_b"):
+                data_one_exp[key] = entry[key]
 
-        data_one_exp["outer"] = entry["outer"]
-        data_one_exp["inner"] = entry["inner"]
-        data_one_exp["residual"] = entry["residual"]
-        data_one_exp["clock_time"] = entry["clock_time"]
-        data_one_exp["elapse_time"] = entry["elapse_time"]
-
-        if solver == "AMGCL" or solver == "Trilinos":
-            data_one_exp["factorize"] = entry["factorize"]
-            data_one_exp["solve"] = entry["solve"]
-            data_one_exp["solver_tol"] = entry["solver_tol"]
-            data_one_exp["solver_maxiter"] = entry["solver_maxiter"]
-            data_one_exp["final_res_norm"] = entry["final_res_norm"]
-            data_one_exp["num_iterations"] = entry["num_iterations"]
-        elif solver == "Hypre":
-            data_one_exp["solver_tol"] = entry["solver_tol"]
-            data_one_exp["solver_maxiter"] = entry["solver_maxiter"]
-            data_one_exp["final_res_norm"] = entry["final_res_norm"]
-            data_one_exp["num_iterations"] = entry["num_iterations"]
-        elif solver == "Eigen::PardisoLDLT":
-            pass
-        else:
-            raise ValueError(f"solver {solver} not recognized.")
         log_data.append(data_one_exp)
 
-
     return log_data
+
+
+# =====================================================================
+# Original line-offset based implementations (kept for reference)
+# =====================================================================
+#
+# def sequence_data(fname, solver):
+#     begin_line = []
+#     end_line = []
+#     with open(fname, 'r') as f:
+#         lines = f.readlines()  # read all lines into a list
+#
+#     for i, line in enumerate(lines):
+#         if "[EXPBEGIN]"  in line:
+#             begin_line.append(i)
+#         if "[EXPEND]" in line:
+#             end_line.append(i)
+#         if "(core dumped)" in line:
+#             end_line.append(i)
+#             # print(f"Aborted detected in log file {fname} at line {i+1}, marking experiment end.")
+#
+#     len_begin = len(begin_line)
+#     len_end = len(end_line)
+#     assert len_begin == len_end, f"#[EXPBEGIN] #[EXPEND] mismatches, unknown error formats. Error dir: {fname}"
+#
+#     begin_correct = []
+#     end_correct = []
+#
+#     error_detected_log = False
+#     for begin_i, end_i in zip(begin_line, end_line):
+#         error_detected_exp = False
+#
+#         for j in range(begin_i, end_i):
+#             if "ERROR" in lines[j] or "error" in lines[j] or "Error" in lines[j] or "TIMEOUT" in lines[j]:
+# #                 print(f"errors between {begin_i+1} line and {end_i+1} line")
+#                 error_detected_exp = True
+#                 break
+#
+#         if error_detected_exp:
+#             error_detected_log = True
+#             continue
+#
+#         begin_correct.append(begin_i)
+#         end_correct.append(end_i)
+#
+#     if error_detected_log:
+#         print(f"Warning: errors detected in log file {fname}, some experiments are skipped.")
+#         # raise ValueError(f"error in current exp: {fname}")
+#
+#
+#     seq = []
+#     for begin_i, end_i in zip(begin_correct, end_correct):
+#         element = {"solver": solver}
+#         cmd = lines[begin_i-3].split(" ")
+#         for part in cmd:
+#             if "_A.bin" in part:
+#                 element["bin_A"] = part.strip()
+#             if "_b.bin" in part:
+#                 element["bin_b"] = part.strip()
+#
+#         if element.get("bin_A") is None or element.get("bin_b") is None:
+#             raise ValueError(f"cannot find bin_A or bin_b in log file {fname}")
+#
+#         if solver == "Eigen::PardisoLDLT": # direct solver
+#             element["residual"] = float(lines[end_i-5].split(" ")[-1].strip())
+#             element["outer"] = float(lines[end_i-4].split(" ")[-1].strip())
+#             element["inner"] = float(lines[end_i-3].split(" ")[-1].strip())
+#             element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
+#             element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
+#
+#         elif solver == "Hypre" : # iterative solver
+#             element["residual"] = float(lines[end_i-10].split(" ")[-1].strip())
+#             element["outer"] = float(lines[end_i-9].split(" ")[-1].strip())
+#             element["inner"] = float(lines[end_i-8].split(" ")[-1].strip())
+#             element["solver_tol"] = float(lines[end_i-7].split(" ")[-1].strip())
+#             element["solver_maxiter"] = float(lines[end_i-6].split(" ")[-1].strip())
+#             element["final_res_norm"] = float(lines[end_i-5].split(" ")[-1].strip())
+#             element["num_iterations"] = float(lines[end_i-4].split(" ")[-1].strip())
+#             element["norm_b"] = float(lines[end_i-3].split(" ")[-1].strip())
+#             element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
+#             element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
+#         elif solver == "AMGCL" or solver == "Trilinos":
+#             element["factorize"] = float(lines[end_i-12].split(" ")[-1].strip().rstrip("s"))
+#             element["solve"] = float(lines[end_i-11].split(" ")[-1].strip().rstrip("s"))
+#             element["residual"] = float(lines[end_i-10].split(" ")[-1].strip())
+#             element["outer"] = float(lines[end_i-9].split(" ")[-1].strip())
+#             element["inner"] = float(lines[end_i-8].split(" ")[-1].strip())
+#             element["solver_tol"] = float(lines[end_i-7].split(" ")[-1].strip())
+#             element["solver_maxiter"] = float(lines[end_i-6].split(" ")[-1].strip())
+#             element["final_res_norm"] = float(lines[end_i-5].split(" ")[-1].strip())
+#             element["num_iterations"] = float(lines[end_i-4].split(" ")[-1].strip())
+#             element["norm_b"] = float(lines[end_i-3].split(" ")[-1].strip())
+#             element["clock_time"] = float(lines[end_i-2].split(" ")[-1].strip().rstrip("s"))
+#             element["elapse_time"] = float(lines[end_i-1].split(" ")[-1].strip().rstrip("s"))
+#         else:
+#             raise ValueError(f"solver {solver} not recognized.")
+#         seq.append(element)
+#     return seq
+#
+#
+# def parse_log_file(fname, solver):
+#     seq = sequence_data(fname, solver)
+#
+#     log_data = []
+#     for entry in seq:
+#         data_one_exp = {}
+#         data_one_exp["log_path"] = fname
+#         data_one_exp["solver"] = solver
+#         data_one_exp["bin_A"] = entry["bin_A"]
+#         data_one_exp["bin_b"] = entry["bin_b"]
+#         data_one_exp["mat_sz"] = get_mat_sz(entry["bin_A"])
+#         data_one_exp["nnz"] = get_nnz(entry["bin_A"])
+#         data_one_exp["density"] = get_density(data_one_exp["nnz"], data_one_exp["mat_sz"])
+#         data_one_exp["sparsity"] = get_sparsity(data_one_exp["nnz"], data_one_exp["mat_sz"])
+#
+#
+#         data_one_exp["outer"] = entry["outer"]
+#         data_one_exp["inner"] = entry["inner"]
+#         data_one_exp["residual"] = entry["residual"]
+#         data_one_exp["clock_time"] = entry["clock_time"]
+#         data_one_exp["elapse_time"] = entry["elapse_time"]
+#
+#         if solver == "AMGCL" or solver == "Trilinos":
+#             data_one_exp["factorize"] = entry["factorize"]
+#             data_one_exp["solve"] = entry["solve"]
+#             data_one_exp["solver_tol"] = entry["solver_tol"]
+#             data_one_exp["solver_maxiter"] = entry["solver_maxiter"]
+#             data_one_exp["final_res_norm"] = entry["final_res_norm"]
+#             data_one_exp["num_iterations"] = entry["num_iterations"]
+#         elif solver == "Hypre":
+#             data_one_exp["solver_tol"] = entry["solver_tol"]
+#             data_one_exp["solver_maxiter"] = entry["solver_maxiter"]
+#             data_one_exp["final_res_norm"] = entry["final_res_norm"]
+#             data_one_exp["num_iterations"] = entry["num_iterations"]
+#         elif solver == "Eigen::PardisoLDLT":
+#             pass
+#         else:
+#             raise ValueError(f"solver {solver} not recognized.")
+#         log_data.append(data_one_exp)
+#
+#
+#     return log_data

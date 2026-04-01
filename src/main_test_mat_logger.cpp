@@ -6,6 +6,7 @@
 #include <chrono>
 #include <regex>
 
+#include <mpi.h>
 
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
@@ -39,11 +40,15 @@ using namespace polysolve;
 
 int main(int argc, char **argv)
 {
-    
-    std::cout<<"[EXPBEGIN]"<<std::endl;
-    if (argc < 4) 
+    MPI_Init(&argc, &argv);
+    int rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    if (rank == 0) std::cout<<"[EXPBEGIN]"<<std::endl;
+    if (argc < 4)
     {
-        std::cout << "Missing args: matrix A file, matrix b file, nullspace file(optional), solver name" << std::endl;
+        if (rank == 0) std::cout << "Missing args: matrix A file, matrix b file, nullspace file(optional), solver name" << std::endl;
+        MPI_Finalize();
         return 1;
     }
 
@@ -74,13 +79,13 @@ int main(int argc, char **argv)
 	//     nullspace_file = argv[3];
     //     is_nullspace = true;
     // }else{
-    //     //!!! this method does not work!!! do not use it!!! 
+    //     //!!! this method does not work!!! do not use it!!!
     //     // does not support nullspace and control threads together
     //     num_threads = std::stoi(argv[3]);  // Remove 'int' - use outer variable
     //     is_nullspace = false;
     //     // set number of threads for Eigen
     //     #ifdef EIGEN_USE_MKL_ALL
-    //     mkl_set_dynamic(0); 
+    //     mkl_set_dynamic(0);
     //     mkl_set_num_threads(num_threads);
     //     std::cout << "MKL threads set to: " << mkl_get_max_threads() << std::endl;
     //     #endif
@@ -88,8 +93,8 @@ int main(int argc, char **argv)
     //     std::cout << "Eigen threads set to: " << Eigen::nbThreads() << std::endl;
     //     }
     // }
-    
-    
+
+
     // record time
     time_t begin_clock,end_clock;
     double ret;
@@ -110,9 +115,12 @@ int main(int argc, char **argv)
     // std::cout << A << "\n" << std::endl;
 
 
-    // define my logger
+    // define my logger — only rank 0 outputs to avoid duplicate logs in MPI
     static std::shared_ptr<spdlog::logger> logger = spdlog::stdout_color_mt("test_logger");
-    logger->set_level(spdlog::level::trace);    
+    if (rank == 0)
+        logger->set_level(spdlog::level::trace);
+    else
+        logger->set_level(spdlog::level::off);
     const static auto log_fmt_text_stats =
     fmt::format("[{}] {{}} {{:.5g}}", fmt::format(fmt::fg(fmt::terminal_color::magenta), "stats"));
     const static auto log_fmt_text_time =
@@ -140,14 +148,14 @@ int main(int argc, char **argv)
 
     // // manually set parameters
     // if( solver_name == "AMGCL")
-    // {    
+    // {
     //         json params = {
     //     { "AMGCL", {
     //     { "solver", {
     //         { "tol", 1e-8 }       // <-- your new tolerance
     //     }}
     //     }}
-    // };  
+    // };
     //     solver->set_parameters(params);}
     // else if(solver_name == "Hypre"){
 
@@ -182,64 +190,73 @@ int main(int argc, char **argv)
     solver->solve(b, x);
     end_clock=clock();
     end = std::chrono::high_resolution_clock::now();
-    float residual = (A * x - b).norm(); // A x - b = 0
-    logger->trace(fmt::runtime(log_fmt_text_stats), "residual", residual);
+
+    // Only Rank 0 outputs results
+    if (rank == 0) {
+        float residual = (A * x - b).norm(); // A x - b = 0
+        logger->trace(fmt::runtime(log_fmt_text_stats), "residual", residual);
 
 
-    bool iterative_solver = false;
-    if (solver_name ==  "AMGCL" || solver_name == "Hypre" || solver_name == "Trilinos"){
-        iterative_solver =true;
+        bool iterative_solver = false;
+        if (solver_name ==  "AMGCL" || solver_name == "Hypre" || solver_name == "Trilinos"){
+            iterative_solver =true;
+        }
+
+
+        json my_params = {};
+        solver->get_info(my_params);
+        double num_iter = 0.0;
+        double final_res_norm = 0.0;
+        double tol = 0.0;
+        double maxiter = 0.0;
+        if (iterative_solver)
+        {
+        num_iter = my_params["num_iterations"];
+        final_res_norm = my_params["final_res_norm"];
+        tol = my_params["solver_tol"];
+        maxiter = my_params["solver_maxiter"];
+        }
+
+        std::regex pattern(R"((\d+)_(\d+)_A\.bin)");
+        std::smatch steps_match;
+        double outer;
+        double inner;
+        if (std::regex_search(A_file, steps_match, pattern)) {
+            outer = std::stod(steps_match[1]);  //
+            inner = std::stod(steps_match[2]); //
+        } else {
+            outer = -1;  //
+            inner = -1; //
+        }
+        logger->trace(fmt::runtime(log_fmt_text_stats), "outer", outer);
+        logger->trace(fmt::runtime(log_fmt_text_stats), "inner", inner);
+
+        if(iterative_solver)
+        {
+            logger->trace(fmt::runtime(log_fmt_text_stats), "solver_tol", tol);
+            logger->trace(fmt::runtime(log_fmt_text_stats), "solver_maxiter", maxiter);
+            logger->trace(fmt::runtime(log_fmt_text_stats), "final_res_norm", final_res_norm);
+            logger->trace(fmt::runtime(log_fmt_text_stats), "num_iterations", num_iter);
+            logger->trace(fmt::runtime(log_fmt_text_stats), "norm_b", b.norm());
+        }
+
+
+
+        ret=(end_clock-begin_clock) / (double) CLOCKS_PER_SEC;
+        elapsed_seconds = std::chrono::duration<double>(end - begin).count();
+        // std::cout << "Solution: \n" << x << std::endl;
+
+        // std::cout << "Condition Number: " << cond_number << std::endl;
+        logger->trace(fmt::runtime(log_fmt_text_time), "clock_time", ret);
+        logger->trace(fmt::runtime(log_fmt_text_time), "elapse_time", elapsed_seconds);
+        // std::cout << "clock_time: " << ret << " ";
+        // std::cout << "elapse_time: " << elapsed_seconds << " ";
+
+        std::cout<<"[EXPEND]"<<std::endl;
     }
 
+    // Destroy solver (and its Tpetra objects) before MPI_Finalize
+    solver.reset();
 
-    json my_params = {};
-    solver->get_info(my_params);
-    double num_iter = 0.0;
-    double final_res_norm = 0.0;
-    double tol = 0.0;
-    double maxiter = 0.0;
-    if (iterative_solver)
-    {
-    num_iter = my_params["num_iterations"];
-    final_res_norm = my_params["final_res_norm"];
-    tol = my_params["solver_tol"];
-    maxiter = my_params["solver_maxiter"];
-    }
-
-    std::regex pattern(R"((\d+)_(\d+)_A\.bin)");
-    std::smatch steps_match;
-    double outer;
-    double inner;
-    if (std::regex_search(A_file, steps_match, pattern)) {
-        outer = std::stod(steps_match[1]);  // 
-        inner = std::stod(steps_match[2]); // 
-    } else {
-        outer = -1;  // 
-        inner = -1; //    
-    }
-    logger->trace(fmt::runtime(log_fmt_text_stats), "outer", outer);
-    logger->trace(fmt::runtime(log_fmt_text_stats), "inner", inner);
-
-    if(iterative_solver)
-    {
-        logger->trace(fmt::runtime(log_fmt_text_stats), "solver_tol", tol);
-        logger->trace(fmt::runtime(log_fmt_text_stats), "solver_maxiter", maxiter);
-        logger->trace(fmt::runtime(log_fmt_text_stats), "final_res_norm", final_res_norm);
-        logger->trace(fmt::runtime(log_fmt_text_stats), "num_iterations", num_iter);
-        logger->trace(fmt::runtime(log_fmt_text_stats), "norm_b", b.norm());
-    }
-
-
-
-    ret=(end_clock-begin_clock) / (double) CLOCKS_PER_SEC;
-    elapsed_seconds = std::chrono::duration<double>(end - begin).count();
-    // std::cout << "Solution: \n" << x << std::endl;
-
-    // std::cout << "Condition Number: " << cond_number << std::endl;
-    logger->trace(fmt::runtime(log_fmt_text_time), "clock_time", ret);
-    logger->trace(fmt::runtime(log_fmt_text_time), "elapse_time", elapsed_seconds);
-    // std::cout << "clock_time: " << ret << " ";
-    // std::cout << "elapse_time: " << elapsed_seconds << " ";
-
-    std::cout<<"[EXPEND]"<<std::endl;    
+    MPI_Finalize();
 }

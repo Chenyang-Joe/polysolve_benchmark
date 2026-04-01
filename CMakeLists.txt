@@ -106,6 +106,9 @@ target_link_libraries(TestMatLogger PRIVATE
     OpenMP::OpenMP_CXX
 )
 
+
+# mpirun -np 4 /u/1/chenyang/benchmark/build.trilinos_tpetra/TestMatLogger /mnt/hdd1/chenyang/benchmark_data/larger_matrix_exp/new_mat_bin_support_large_index/3D_golf_ball_113325_try_larger_matrix_0/1_1_A.bin /mnt/hdd1/chenyang/benchmark_data/larger_matrix_exp/new_mat_bin_support_large_index/3D_golf_ball_113325_try_larger_matrix_0/1_1_b.bin Trilinos
+
 # target_link_libraries(TestMatLogger PRIVATE
 #     polysolve
 #     mkl::mkl

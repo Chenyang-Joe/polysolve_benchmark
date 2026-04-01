@@ -1,0 +1,117 @@
+============================================
+Trilinos vs Hypre Benchmark
+Date: Wed Mar 11 08:28:33 AM EDT 2026
+============================================
+
+--------------------------------------------
+Matrix: 3D_golf_ball_39376_try_larger_matrix_0
+--------------------------------------------
+  Trilinos  | np=1  | iters=82     | res_norm=8.1071e-11   | residual=2.2147e-17   | factorize=e        | solve=e
+2.9643 | total=e
+4.213 
+  Trilinos  | np=2  | iters=61     | res_norm=8.131e-11    | residual=2.2213e-17   | factorize=e        | solve=e
+1.3261 | total=e
+2.545 
+  Trilinos  | np=4  | iters=57     | res_norm=6.3363e-11   | residual=1.731e-17    | factorize=e        | solve=e
+8.462  | total=e
+10.058
+  Hypre     | np=1  | iters=40     | res_norm=6.2027e-11   | residual=1.6945e-17   | factorize=e
+1.0221 | solve=e
+2.8069 | total=e
+3.8292
+  Hypre     | np=2  | iters=40     | res_norm=6.2027e-11   | residual=1.6945e-17   | factorize=e
+1.0991 | solve=e
+3.3186 | total=e
+4.4205
+  Hypre | np=4 | FAILED (exit=124)
+
+--------------------------------------------
+Matrix: 3D_golf_ball_73852_try_larger_matrix_0
+--------------------------------------------
+  Trilinos  | np=1  | iters=124    | res_norm=7.537e-11    | residual=1.6139e-17   | factorize=e        | solve=e
+9.4595 | total=e
+11.969
+  Trilinos  | np=2  | iters=101    | res_norm=9.5862e-11   | residual=2.0527e-17   | factorize=e        | solve=e
+4.9644 | total=e
+7.4902
+  Trilinos  | np=4  | iters=56     | res_norm=9.0668e-11   | residual=1.9415e-17   | factorize=e        | solve=e
+8.5115 | total=e
+11.674
+  Hypre     | np=1  | iters=55     | res_norm=6.9744e-11   | residual=1.4934e-17   | factorize=e
+2.0319 | solve=e
+7.5296 | total=e
+9.5617
+  Hypre     | np=2  | iters=55     | res_norm=6.9744e-11   | residual=1.4934e-17   | factorize=e
+2.1731 | solve=e
+9.138  | total=e
+11.314
+  Hypre | np=4 | FAILED (exit=124)
+
+--------------------------------------------
+Matrix: 3D_golf_ball_113325_try_larger_matrix_0
+--------------------------------------------
+  Trilinos  | np=1  | iters=134    | res_norm=7.6378e-11   | residual=1.3396e-17   | factorize=e        | solve=e
+16.462 | total=e
+20.583
+  Trilinos  | np=2  | iters=92     | res_norm=9.8004e-11   | residual=1.719e-17    | factorize=e        | solve=e
+7.4835 | total=e
+11.769
+  Trilinos  | np=4  | iters=56     | res_norm=6.325e-11    | residual=1.1094e-17   | factorize=e        | solve=e
+9.569  | total=e
+15.576
+  Hypre     | np=1  | iters=58     | res_norm=9.6438e-11   | residual=1.6915e-17   | factorize=e
+3.2217 | solve=e
+13.201 | total=e
+16.423
+  Hypre     | np=2  | iters=58     | res_norm=9.6438e-11   | residual=1.6915e-17   | factorize=e
+3.4422 | solve=e
+16.091 | total=e
+19.548
+  Hypre | np=4 | FAILED (exit=124)
+
+--------------------------------------------
+Matrix: 3D_golf_ball_189090_try_larger_matrix_0
+--------------------------------------------
+  Trilinos  | np=1  | iters=1000   | res_norm=2.7545e-10   | residual=3.5688e-17   | factorize=e        | solve=e
+262.07 | total=e
+268.69
+  Trilinos  | np=2  | iters=630    | res_norm=9.903e-11    | residual=1.2831e-17   | factorize=e        | solve=e
+117.91 | total=e
+124.36
+  Trilinos  | np=4  | iters=216    | res_norm=7.7409e-11   | residual=1.0029e-17   | factorize=e        | solve=e
+43.924 | total=e
+50.942
+  Hypre     | np=1  | iters=70     | res_norm=8.5929e-11   | residual=1.1133e-17   | factorize=e
+5.617  | solve=e
+24.873 | total=e
+30.49 
+  Hypre     | np=2  | iters=70     | res_norm=8.5929e-11   | residual=1.1133e-17   | factorize=e
+5.9969 | solve=e
+29.286 | total=e
+35.313
+  Hypre | np=4 | FAILED (exit=124)
+
+--------------------------------------------
+Matrix: 3D_golf_ball_vanilla_try_larger_matrix_0
+--------------------------------------------
+  Trilinos  | np=1  | iters=46     | res_norm=7.777e-11    | residual=1.6113e-16   | factorize=e        | solve=e
+1.0581 | total=e
+1.9919
+  Trilinos  | np=2  | iters=44     | res_norm=6.2273e-11   | residual=1.2902e-16   | factorize=e        | solve=e
+0.72936 | total=e
+1.9079
+  Trilinos  | np=4  | iters=42     | res_norm=6.9785e-11   | residual=1.4458e-16   | factorize=e        | solve=e
+6.5246 | total=e
+8.5816
+  Hypre     | np=1  | iters=56     | res_norm=7.308e-11    | residual=1.5141e-16   | factorize=e
+0.60207 | solve=e
+2.4164 | total=e
+3.0187
+  Hypre     | np=2  | iters=56     | res_norm=7.308e-11    | residual=1.5141e-16   | factorize=e
+0.64894 | solve=e
+2.9616 | total=e
+3.6105
+  Hypre | np=4 | FAILED (exit=124)
+
+============================================
+Benchmark complete.
