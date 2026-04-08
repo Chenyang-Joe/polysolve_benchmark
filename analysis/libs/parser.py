@@ -91,7 +91,10 @@ def sequence_data(fname, solver):
 
             m = _RE_STATS.search(line)
             if m:
-                element[m.group(1)] = float(m.group(2))
+                try:
+                    element[m.group(1)] = float(m.group(2))
+                except ValueError:
+                    element[m.group(1)] = float('nan')
                 continue
 
         seq.append(element)
