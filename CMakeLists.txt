@@ -120,3 +120,22 @@ target_link_libraries(TestMatLogger PRIVATE
 set_target_properties(TestMatLogger PROPERTIES
   LINK_FLAGS "-Wl,--no-as-needed"
 )
+
+
+# ---- BinToMtx: convert (A.bin, b.bin) -> Matrix Market (.mtx) ----
+add_executable(BinToMtx
+    scripts/bin_to_mtx.cpp
+    src/save_problem.cpp
+)
+target_include_directories(BinToMtx PRIVATE "${MKL_INCLUDE_DIR}")
+target_link_libraries(BinToMtx PRIVATE
+    polysolve
+    mkl::mkl
+    pthread
+    m
+    dl
+    OpenMP::OpenMP_CXX
+)
+set_target_properties(BinToMtx PROPERTIES
+  LINK_FLAGS "-Wl,--no-as-needed"
+)
